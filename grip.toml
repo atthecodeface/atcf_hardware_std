@@ -1,0 +1,21 @@
+doc="""
+This repository contains the ATCF standard CDL library source.
+
+Currently this consists of modules that are abstractions for
+technology libraries that are required by many different builds.
+
+This includes standard SRAMs and synchronization registers.
+"""
+[env]
+SRC_ROOT     = "@GRIP_REPO_PATH@"
+BUILD_ROOT   = "@BUILD_DIR@"
+MAKE_OPTIONS = "-f @GRIP_REPO_PATH@/Makefile SRC_ROOT=@SRC_ROOT@ BUILD_ROOT=@BUILD_DIR@"
+
+[clean_sim]
+exec="mkdir -p @BUILD_DIR@ && cd @BUILD_DIR@ && make @MAKE_OPTIONS@ clean"
+
+[build_sim]
+requires=[".clean_sim"]
+wd="@BUILD_DIR@"
+exec="make @MAKE_OPTIONS@ -j8 all"
+

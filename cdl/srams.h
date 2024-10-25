@@ -17,7 +17,7 @@
  *
  */
 
-/*a Modules */
+/*a Small SRAMs (<16kB) */
 /*m se_sram_srw_128x64 */
 extern module se_sram_srw_128x64( clock sram_clock,
                                    input bit select,
@@ -93,6 +93,7 @@ extern module se_sram_srw_512x64( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
+/*a 16kB SRAMs */
 /*m se_sram_srw_16384x8 */
 extern module se_sram_srw_16384x8( clock sram_clock,
                                    input bit select,
@@ -106,6 +107,46 @@ extern module se_sram_srw_16384x8( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
+/*m se_sram_srw_8192x16_we8 */
+extern module se_sram_srw_8192x16_we8( clock sram_clock,
+                                       input bit select,
+                                       input bit[13] address,
+                                       input bit read_not_write,
+                                       input bit[2] write_enable,
+                                       input bit[16] write_data,
+                                       output bit[16] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*m se_sram_srw_4096x32_we8 */
+extern module se_sram_srw_4096x32_we8( clock sram_clock,
+                                       input bit select,
+                                       input bit[12] address,
+                                       input bit read_not_write,
+                                       input bit[4] write_enable,
+                                       input bit[32] write_data,
+                                       output bit[32] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*m se_sram_srw_2048x64_we8 */
+extern module se_sram_srw_2048x64_we8( clock sram_clock,
+                                       input bit select,
+                                       input bit[11] address,
+                                       input bit read_not_write,
+                                       input bit[8] write_enable,
+                                       input bit[64] write_data,
+                                       output bit[64] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*a 64kB SRAMs */
 /*m se_sram_srw_65536x8 */
 extern module se_sram_srw_65536x8( clock sram_clock,
                                    input bit select,
@@ -119,12 +160,25 @@ extern module se_sram_srw_65536x8( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
-/*m se_sram_srw_16384x32 */
-extern module se_sram_srw_16384x32( clock sram_clock,
+/*m se_sram_srw_32768x16_we8 */
+extern module se_sram_srw_32768x16_we8( clock sram_clock,
+                                    input bit select,
+                                    input bit[15] address,
+                                    input bit read_not_write,
+                                    input bit[2] write_enable,
+                                    input bit[16] write_data,
+                                    output bit[16] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*m se_sram_srw_16384x32_we8 */
+extern module se_sram_srw_16384x32_we8( clock sram_clock,
                                     input bit select,
                                     input bit[14] address,
-                                    input bit write_enable,
                                     input bit read_not_write,
+                                    input bit[4] write_enable,
                                     input bit[32] write_data,
                                     output bit[32] data_out )
 {
@@ -132,12 +186,25 @@ extern module se_sram_srw_16384x32( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
-/*m se_sram_srw_16384x32_we4 */
-extern module se_sram_srw_16384x32_we8( clock sram_clock,
+/*m se_sram_srw_8192x64_we8 */
+extern module se_sram_srw_8192x64_we8( clock sram_clock,
+                                    input bit select,
+                                    input bit[13] address,
+                                    input bit read_not_write,
+                                    input bit[8] write_enable,
+                                    input bit[64] write_data,
+                                    output bit[64] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*m se_sram_srw_16384x32 */
+extern module se_sram_srw_16384x32( clock sram_clock,
                                     input bit select,
                                     input bit[14] address,
+                                    input bit write_enable,
                                     input bit read_not_write,
-                                    input bit[4] write_enable,
                                     input bit[32] write_data,
                                     output bit[32] data_out )
 {
@@ -157,19 +224,7 @@ extern module se_sram_srw_16384x40( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
-/*m se_sram_srw_32768x64 */
-extern module se_sram_srw_32768x64( clock sram_clock,
-                                   input bit select,
-                                   input bit[15] address,
-                                   input bit read_not_write,
-                                   input bit write_enable,
-                                   input bit[64] write_data,
-                                   output bit[64] data_out )
-{
-    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
-    timing from rising clock sram_clock   data_out;
-}
-
+/*a 128kB SRAMs */
 /*m se_sram_srw_32768x32 */
 extern module se_sram_srw_32768x32( clock sram_clock,
                                    input bit select,
@@ -183,6 +238,7 @@ extern module se_sram_srw_32768x32( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
+/*a 256kB SRAMs */
 /*m se_sram_srw_65536x32 */
 extern module se_sram_srw_65536x32( clock sram_clock,
                                    input bit select,
@@ -196,6 +252,20 @@ extern module se_sram_srw_65536x32( clock sram_clock,
     timing from rising clock sram_clock   data_out;
 }
 
+/*m se_sram_srw_32768x64 */
+extern module se_sram_srw_32768x64( clock sram_clock,
+                                   input bit select,
+                                   input bit[15] address,
+                                   input bit read_not_write,
+                                   input bit write_enable,
+                                   input bit[64] write_data,
+                                   output bit[64] data_out )
+{
+    timing to   rising clock sram_clock   select, address, read_not_write, write_data, write_enable;
+    timing from rising clock sram_clock   data_out;
+}
+
+/*a Dual-port SRAMs */
 /*m se_sram_mrw_2_16384x48 */
 extern module se_sram_mrw_2_16384x48( clock sram_clock_0,
                                       input bit select_0,

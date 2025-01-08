@@ -25,19 +25,19 @@ simulation. Verilog simulation currently requires hand-crafted or
 machine-generated verilog models; for the FPGAs this is performed
 with a Python 2 script that requires porting in to this repository.
 
-# Synchronization flops
+# Technology library modules
+
+## Synchronization flops
 
 Designs with asynchronous clocks often require synchronization flops.
 This repository includes two technology-derived flops; the first is
-purely that, a flop. It should in a real design (as in, for silicon or
+purely that, a flop (`tech_sync_flop`). It should in a real design (as in, for silicon or
 FPGA) be replaced by a metastable resistant flop.
 
 The second is a synchronization bit; this should be a chain of the
-required length of the reuired metastable resistant flops. Most
+required length of the reuired metastable resistant flops (`tech_sync_bit`). Most
 designs may assume that this will synchronize a bit with a worst case
 timing of a source clock period and two destination clock periods.
-
-# Technology library modules
 
 ## Serdes modules
 
